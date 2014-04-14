@@ -1,5 +1,7 @@
 DROP TABLE IF EXISTS Ligne
 DROP TABLE IF EXISTS Tramway;
+DROP TABLE IF EXISTS Chauffeur;
+DROP TABLE IF EXISTS chauf_tram;
 DROP TABLE IF EXISTS Passage;
 DROP TABLE IF EXISTS Station_ligne;
 DROP TABLE IF EXISTS Station;
@@ -62,12 +64,27 @@ CREATE TABLE Passage(
 );
 
 
+CREATE TABLE Chauffeur(
+       `matricule` integer not null primary key auto_increment,
+       `nom_chauf` varchar(64) not null
+);
+
 CREATE TABLE Tramway(
 		`id_tram` INT NOT NULL,
 		`num_ligne` INT NOT NULL,
 		`heure_de_depart` TIME NOT NULL,
 		PRIMARY KEY(id_tram, heure_de_depart),
 		FOREIGN KEY(num_ligne) REFERENCES Ligne(num_ligne)
+);
+CREATE TABLE chauf_tram(
+       matricule  int not null,
+       id_tram int not null,
+       _date date not null,
+       Hdebut time not null,
+       Hfin time not null,
+       primary key(id_tram,_date,Hdebut),
+       foreign key(matricule) references Chauffeur(matricule),
+       foreign key(id_tram) references Tramway(id_tram)
 );
 
 
@@ -84,7 +101,7 @@ AS SELECT Tramway.`id_tram`,Station_ligne.`num_ligne`, Station.`nom_station`, AD
 FROM Station_ligne 
 NATURAL JOIN Station
 NATURAL JOIN Tramway
-ORDER BY Station_ligne.`ordre`,Passages,Tramway.`id_tram`;
+ORDER BY Tramway.`id_tram`,Passages;
 
 DROP TRIGGER IF EXISTS Station_before_insert;
 DROP TRIGGER IF EXISTS Station_before_update ;
@@ -142,6 +159,12 @@ BEGIN
 END|
 
 
+CREATE TRIGGER before_after_update_st_ligne AFTER UPDATE 
+ON Station_ligne FOR EACH ROW
+BEGIN
+	
+
+END|
 
 
 DELIMITER ;
