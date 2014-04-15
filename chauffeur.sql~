@@ -1,0 +1,12 @@
+
+INSERT INTO Chauffeur(nomchauf) VALUES ('Hugo Nioteau');
+INSERT INTO Chauffeur(nomchauf) VALUES ('Frank Anaba');
+INSERT INTO Chauffeur(nomchauf) VALUES ('Jue Dong');
+INSERT INTO Chauffeur(nomchauf) VALUES ('Ayoub Dra');
+INSERT INTO Chauffeur(nomchauf) VALUES ('Hamza Dra');
+INSERT INTO Chauffeur(nomchauf) VALUES ('Ousmane SOW');
+INSERT INTO Chauffeur(nomchauf) VALUES ('Maxime Vincent');
+INSERT INTO Chauffeur(nomchauf) VALUES ('Pape Birama Mbodj');
+INSERT INTO Chauffeur(nomchauf) VALUES ('Ibrahima Toure');
+INSERT INTO Chauffeur(nomchauf) VALUES ('oumar lo');
+INSERT INTO Chauffeur(nomchauf) VALUES ('Baaba Yaar');
